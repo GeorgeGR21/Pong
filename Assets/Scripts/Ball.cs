@@ -6,17 +6,20 @@ public class Ball : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
+    public Vector3 startPosition;
 
 
     void Start()
     {
+        startPosition = transform.position;
         Launch();
     }
 
-
-    void Update()
+    public void Reset()
     {
-
+        rb.velocity = Vector2.zero;
+        transform.position = startPosition;
+        Launch();
     }
 
     private void Launch()
