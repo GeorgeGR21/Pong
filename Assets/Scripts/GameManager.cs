@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         Player1Score++;
         Player1Text.GetComponent<TextMeshProUGUI>().text = Player1Score.ToString();
         ball.GetComponent<Ball>().speed += 1;
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.PlayOneShot(audio.clip);
+        }
         ResetPosition();
     }
 
@@ -36,6 +41,11 @@ public class GameManager : MonoBehaviour
         Player2Score++;
         Player2Text.GetComponent<TextMeshProUGUI>().text = Player2Score.ToString();
         ball.GetComponent<Ball>().speed += 1;
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.PlayOneShot(audio.clip);
+        }
         ResetPosition();
     }
 

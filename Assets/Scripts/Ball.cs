@@ -36,6 +36,12 @@ public class Ball : MonoBehaviour
         {
             speed += 0.2f;
             rb.velocity = rb.velocity.normalized * speed;
+
+            AudioSource audio = GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.PlayOneShot(audio.clip);
+            }
         }
     }
 }
