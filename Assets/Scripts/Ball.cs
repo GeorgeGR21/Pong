@@ -7,7 +7,6 @@ public class Ball : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
     public Vector3 startPosition;
-    public Paddle Player1;
 
 
     void Start()
@@ -20,6 +19,7 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         transform.position = startPosition;
+        speed = 5;
         Launch();
     }
 
@@ -32,18 +32,10 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == Player1)
+        if (collision.gameObject.tag != "TopWall" && collision.gameObject.tag != "BottomWall")
         {
-            SpeedUp();
+            speed += 0.2f;
+            rb.velocity = rb.velocity.normalized * speed;
         }
-        else if (collision.gameObject == Player1)
-        {
-            SpeedUp();
-        }
-    }
-
-    private void SpeedUp()
-    {
-        speed += 1;
     }
 }
